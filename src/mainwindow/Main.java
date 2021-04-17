@@ -20,11 +20,15 @@ public class Main extends JFrame {
         super("Network Mock-Server (" + VERSION + ")");
         // tpTabs.setSelectedIndex(2);
         add(pMain);
-        pack();
-        setSize(640, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setVisible(true);
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+        }
+
+        setSize(800, 600);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); setLocationRelativeTo(null); setVisible(true);
     }
 
     public static void main(String[] args) {

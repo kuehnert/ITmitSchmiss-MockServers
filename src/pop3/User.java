@@ -3,9 +3,9 @@ package pop3;
 import javax.swing.*;
 
 public class User {
-    private String name;
-    private String password;
-    private DefaultListModel<Mail> mails;
+    private final String name;
+    private final String password;
+    private final DefaultListModel<Mail> mails;
 
     public User(String name, String password) {
         this.name = name; this.password = password; mails = new DefaultListModel<>();

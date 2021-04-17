@@ -20,26 +20,21 @@ public class EchoServer {
                 (new EchoClientThread(++cnt, socket)).start();
             }
         } catch (IOException e) {
-            System.err.println(e.toString());
-            System.exit(1);
+            System.err.println(e); System.exit(1);
         }
     }
 }
 
-class EchoClientThread
-        extends Thread {
-    private int name;
-    private Socket socket;
+class EchoClientThread extends Thread {
+    private final int name;
+    private final Socket socket;
 
     public EchoClientThread(int name, Socket socket) {
-        this.name = name;
-        this.socket = socket;
+        this.name = name; this.socket = socket;
     }
 
     public void run() {
-        String msg = "echo.EchoServer: Verbindung " + name;
-        System.out.println(msg + " hergestellt");
-        try {
+        String msg = "echo.EchoServer: Verbindung " + name; System.out.println(msg + " hergestellt"); try {
             InputStream in = socket.getInputStream();
             OutputStream out = socket.getOutputStream();
             out.write((msg + "\r\n").getBytes());
@@ -51,7 +46,7 @@ class EchoClientThread
             System.out.println("Verbindung " + name + " wird beendet");
             socket.close();
         } catch (IOException e) {
-            System.err.println(e.toString());
+            System.err.println(e);
         }
     }
 }

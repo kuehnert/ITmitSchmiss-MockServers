@@ -1,6 +1,7 @@
 package daytime;
 
 import mainwindow.Main;
+import utils.SocketUtils;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
 public class TimeServer {
-    private JTextArea taLogger;
+    private final JTextArea taLogger;
     private TimeServerThread thread;
 
     public TimeServer(JTextArea taLogger) {
@@ -29,13 +30,12 @@ public class TimeServer {
     }
 
     public void stop() {
-        thread.quit();
-        taLogger.append("Time Server gestoppt.\n");
+        thread.quit(); taLogger.append("Time Server gestoppt.\n\n");
     }
 }
 
 class TimeServerThread extends Thread {
-    private JTextArea taLogger;
+    private final JTextArea taLogger;
     private ServerSocket serverSocket;
     private boolean isRunning;
 
@@ -52,20 +52,15 @@ class TimeServerThread extends Thread {
     public void run() {
         try {
             serverSocket = new ServerSocket(10013);
-            taLogger.append("Time Server gestartet.\n" +
-                    "Verbinde Dich mit Telnet an " + serverSocket.getInetAddress() +
-                    " und auf Port " + Main.PORT_TIME +
-                    "\nDu kannst die Ausgabe vergleichen mit z.B. time-a-g.nist.gov auf Port 13.\n");
+            taLogger.append("Time Server gestartet.\n" + "Verbinde Dich mit Telnet an " + SocketUtils.getHostIP() +
+                    " und auf Port " + Main.PORT_TIME + "\nDu kannst die Ausgabe vergleichen mit z.B. time-a-g.nist" + ".gov auf Port 13.\n");
             isRunning = true;
 
             while (isRunning) {
                 try (Socket client = serverSocket.accept()) {
-                    OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
-                    String ausgabe = now.toString() + " (UTC)";
+                    OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC); String ausgabe = now + " (UTC)";
                     taLogger.append("Client verbunden, sende: " + ausgabe + "\n");
-                    PrintWriter out = new PrintWriter(client.getOutputStream());
-                    out.println(ausgabe);
-                    out.flush();
+                    PrintWriter out = new PrintWriter(client.getOutputStream()); out.println(ausgabe); out.flush();
                     out.close();
                 } catch (SocketException e) {
                     System.err.println("FEHLER");

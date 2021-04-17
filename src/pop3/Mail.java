@@ -3,18 +3,14 @@ package pop3;
 import java.util.Date;
 
 public class Mail {
-    private String sender;
-    private String recipient;
-    private String title;
-    private String content;
-    private Date sent;
+    private final String sender;
+    private final String recipient;
+    private final String title;
+    private final String content;
+    private final Date sent;
 
     public Mail(String sender, String recipient, String title, String content, Date sent) {
-        this.sender = sender;
-        this.recipient = recipient;
-        this.title = title;
-        this.content = content;
-        this.sent = sent;
+        this.sender = sender; this.recipient = recipient; this.title = title; this.content = content; this.sent = sent;
     }
 
     @Override
