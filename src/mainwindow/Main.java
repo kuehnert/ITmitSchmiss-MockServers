@@ -11,14 +11,13 @@ public class Main extends JFrame {
     public static final int PORT_POP3 = 10110;
     public static final int PORT_SMTP = 10025;
 
-    public static final String VERSION = "1.0.3";
+    public static final String VERSION = "1.1.0";
     private JPanel pMain;
     private JPPOP3Server JPPOP3Server;
     private JTabbedPane tpTabs;
 
     public Main() {
         super("Network Mock-Server (" + VERSION + ")");
-        // tpTabs.setSelectedIndex(2);
         add(pMain);
 
         try {
@@ -32,8 +31,7 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
-        System.out.println(System.getProperty("file.encoding"));
-        System.out.println(Charset.defaultCharset());
+        System.out.println("Charset: " + Charset.defaultCharset());
         new Main();
     }
 }

@@ -21,9 +21,9 @@ public class SocketUtils {
     public static String getSocketIP(Socket socket) {
         InetAddress ip = ((InetSocketAddress) socket.getRemoteSocketAddress()).getAddress();
         if (ip instanceof Inet4Address) {
-            return ip.toString();
+            return ip.toString().replaceFirst("/", "");
         } else {
-            return ip.toString();
+            return ip.toString().replaceFirst("/", "");
         }
     }
 }

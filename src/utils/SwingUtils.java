@@ -18,9 +18,13 @@ public class SwingUtils {
             return myFont;
         } else {
             String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-            int index = 0; while (myFont == null && index < PREFERRED_FONTS.length) {
-                String currentFont = PREFERRED_FONTS[index++]; if (Arrays.binarySearch(fonts, currentFont) >= 0) {
-                    System.out.println("Choosing Font " + currentFont); myFont = new Font(currentFont, Font.PLAIN, 14);
+            int index = 0;
+            while (myFont == null && index < PREFERRED_FONTS.length) {
+                String currentFont = PREFERRED_FONTS[index++];
+
+                if (Arrays.binarySearch(fonts, currentFont) >= 0) {
+                    // System.out.println("Choosing Font " + currentFont);
+                    myFont = new Font(currentFont, Font.PLAIN, 14);
                 }
             }
 

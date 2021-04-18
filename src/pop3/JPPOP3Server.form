@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="pop3.JPPOP3Server">
-  <grid id="27dc6" binding="pMain" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="pMain" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="8" left="8" bottom="8" right="8"/>
     <constraints>
       <xy x="20" y="20" width="548" height="400"/>
@@ -16,15 +16,6 @@
           <text value="POP3-Server"/>
         </properties>
       </component>
-      <component id="ac22c" class="javax.swing.JButton" binding="bStartStop">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <enabled value="true"/>
-          <text value="Start POP3-Mail Server"/>
-        </properties>
-      </component>
       <component id="bdf7b" class="javax.swing.JLabel" binding="lbPort">
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -38,17 +29,17 @@
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <grid id="e607a" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="e607a" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
           <scrollpane id="c76c3">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -57,13 +48,16 @@
             <children>
               <component id="7716" class="javax.swing.JList" binding="lMessages">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <enabled value="false"/>
+                  <selectionMode value="0"/>
+                </properties>
               </component>
             </children>
           </scrollpane>
           <scrollpane id="af8a6">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -72,13 +66,17 @@
             <children>
               <component id="e9d5e" class="javax.swing.JList" binding="lUsers">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <enabled value="false"/>
+                  <model/>
+                  <selectionMode value="0"/>
+                </properties>
               </component>
             </children>
           </scrollpane>
           <scrollpane id="e7725">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -88,15 +86,40 @@
                 <properties>
                   <contentType value="text/html"/>
                   <editable value="false"/>
+                  <enabled value="false"/>
                 </properties>
               </component>
             </children>
           </scrollpane>
+          <component id="7b822" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="User / Passwort"/>
+            </properties>
+          </component>
+          <component id="57d2" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="E-Mail-Liste"/>
+            </properties>
+          </component>
+          <component id="43526" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="E-Mail-Nachricht"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <scrollpane id="72c7a">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -105,12 +128,30 @@
             <constraints/>
             <properties>
               <editable value="false"/>
+              <enabled value="true"/>
               <lineWrap value="true"/>
               <wrapStyleWord value="true"/>
             </properties>
           </component>
         </children>
       </scrollpane>
+      <component id="ac22c" class="javax.swing.JButton" binding="bStartStop">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <text value="Start"/>
+        </properties>
+      </component>
+      <component id="d845" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Log"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

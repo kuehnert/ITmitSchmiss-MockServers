@@ -10,28 +10,32 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class JPPOP3Server extends JPanel {
+    private static final String BUTTON_START_MSG = "Starte POP3-Mail-Server";
+    private static final String BUTTON_STOP_MSG = "Stoppe POP3-Mail-Server";
+
+    private MailServer mailServer;
     private JButton bStartStop;
-    private final MailServer mailServer;
     private JPanel pMain;
     private JLabel lbPort;
     private JList lMessages;
     private JTextPane taMessage;
     private JList lUsers;
     private JTextArea taLog;
+    private boolean isRunning;
 
     public JPPOP3Server() {
-        super(); lbPort.setText("Port: " + Main.PORT_POP3); taLog.setFont(SwingUtils.getFont());
-        taMessage.setFont(SwingUtils.getFont()); add(pMain); mailServer = new MailServer(taLog);
-        lUsers.setModel(mailServer.getUsers());
+        super();
+        isRunning = false;
+        bStartStop.setText(BUTTON_START_MSG);
+        lbPort.setText("Port: " + Main.PORT_POP3);
+        taLog.setFont(SwingUtils.getFont());
+        taMessage.setFont(SwingUtils.getFont());
+        add(pMain);
 
         bStartStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (mailServer.isRunning()) {
-                    mailServer.stopThread(); bStartStop.setText("Start");
-                } else {
-                    mailServer.start(); bStartStop.setText("Stop");
-                }
+                startStop();
             }
         });
         lUsers.addListSelectionListener(new ListSelectionListener() {
@@ -52,10 +56,33 @@ public class JPPOP3Server extends JPanel {
         });
     }
 
+    public void startStop() {
+        if (isRunning) {
+            lUsers.setEnabled(false);
+            lMessages.setEnabled(false);
+            taMessage.setEnabled(false);
+            mailServer.stopThread();
+            mailServer = null;
+            bStartStop.setText(BUTTON_START_MSG);
+            isRunning = false;
+        } else {
+            mailServer = new MailServer(this);
+            lUsers.setModel(mailServer.getUsers());
+            lUsers.setEnabled(true);
+            lMessages.setEnabled(true);
+            taMessage.setEnabled(true);
+            mailServer.start();
+            isRunning = true;
+            bStartStop.setText(BUTTON_STOP_MSG);
+        }
+    }
+
     private void changeSelectedUser() {
         User newUser = (User) lUsers.getSelectedValue();
-        lMessages.setModel(newUser.getMails());
-        lMessages.setSelectedIndex(0);
+        if (newUser != null) {
+            lMessages.setModel(newUser.getMails());
+            lMessages.setSelectedIndex(0);
+        }
     }
 
     private void changeSelectedMail() {
@@ -65,5 +92,9 @@ public class JPPOP3Server extends JPanel {
         } else {
             taMessage.setText(newMail.toHTML());
         }
+    }
+
+    public JTextArea getLog() {
+        return taLog;
     }
 }
