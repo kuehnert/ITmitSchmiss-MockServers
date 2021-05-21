@@ -1,6 +1,7 @@
 package echo;
 
 import mainwindow.Main;
+import utils.JLogArea;
 import utils.SocketUtils;
 
 import javax.swing.*;
@@ -14,10 +15,10 @@ import java.net.SocketException;
 import java.util.ArrayList;
 
 public class EchoServer {
-    private final JTextArea taLogger;
+    private final JLogArea taLogger;
     private EchoServerThread thread;
 
-    public EchoServer(JTextArea taLogger) {
+    public EchoServer(JLogArea taLogger) {
         this.taLogger = taLogger;
     }
 
@@ -36,13 +37,13 @@ public class EchoServer {
 }
 
 class EchoServerThread extends Thread {
-    private final JTextArea taLogger;
+    private final JLogArea taLogger;
     private ServerSocket serverSocket;
     private boolean isRunning;
     private final ArrayList<EchoClientThread> clients = new ArrayList<EchoClientThread>();
     private int clientCount = 0;
 
-    public EchoServerThread(JTextArea taLogger) {
+    public EchoServerThread(JLogArea taLogger) {
         this.taLogger = taLogger; isRunning = false;
     }
 
@@ -76,7 +77,7 @@ class EchoServerThread extends Thread {
         }
     }
 
-    public JTextArea getLogger() {
+    public JLogArea getLogger() {
         return taLogger;
     }
 
@@ -100,7 +101,7 @@ class EchoClientThread extends Thread {
             "schliessen.\n";
     private final Socket socket;
     private final EchoServerThread server;
-    private JTextArea taLogger;
+    private JLogArea taLogger;
     private BufferedReader in;
     private PrintWriter out;
     private boolean isRunning;

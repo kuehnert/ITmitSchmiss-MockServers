@@ -15,7 +15,7 @@ public class JPEchoServer extends JPanel {
     private JButton bStartStop;
     private JPanel pMain;
     private JLabel lbPort;
-    private JTextArea taLog;
+    private utils.JLogArea taLog;
     private boolean running;
 
     public JPEchoServer() {

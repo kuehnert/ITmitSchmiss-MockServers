@@ -1,6 +1,7 @@
 package daytime;
 
 import mainwindow.Main;
+import utils.JLogArea;
 import utils.SocketUtils;
 
 import javax.swing.*;
@@ -13,10 +14,10 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
 public class TimeServer {
-    private final JTextArea taLogger;
+    private final JLogArea taLogger;
     private TimeServerThread thread;
 
-    public TimeServer(JTextArea taLogger) {
+    public TimeServer(JLogArea taLogger) {
         this.taLogger = taLogger;
     }
 
@@ -36,11 +37,11 @@ public class TimeServer {
 }
 
 class TimeServerThread extends Thread {
-    private final JTextArea taLogger;
+    private final JLogArea taLogger;
     private ServerSocket serverSocket;
     private boolean isRunning;
 
-    public TimeServerThread(JTextArea taLogger) {
+    public TimeServerThread(JLogArea taLogger) {
         this.taLogger = taLogger;
         isRunning = false;
     }

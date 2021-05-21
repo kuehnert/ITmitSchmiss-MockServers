@@ -13,7 +13,7 @@ public class JPDaytimeServer extends JPanel {
 
     private final TimeServer timeServer;
     private JButton bStartStop;
-    private JTextArea taLog;
+    private utils.JLogArea taLog;
     private JPanel pMain;
     private JLabel lbPort;
     private boolean running;

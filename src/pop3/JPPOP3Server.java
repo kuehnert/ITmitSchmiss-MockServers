@@ -1,6 +1,7 @@
 package pop3;
 
 import mainwindow.Main;
+import utils.JLogArea;
 import utils.SwingUtils;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ public class JPPOP3Server extends JPanel {
     private JList lMessages;
     private JTextPane taMessage;
     private JList lUsers;
-    private JTextArea taLog;
+    private utils.JLogArea taLog;
     private boolean isRunning;
 
     public JPPOP3Server() {
@@ -28,7 +29,6 @@ public class JPPOP3Server extends JPanel {
         isRunning = false;
         bStartStop.setText(BUTTON_START_MSG);
         lbPort.setText("Port: " + Main.PORT_POP3);
-        taLog.setFont(SwingUtils.getFont());
         taMessage.setFont(SwingUtils.getFont());
         add(pMain);
 
@@ -94,7 +94,12 @@ public class JPPOP3Server extends JPanel {
         }
     }
 
-    public JTextArea getLog() {
+    private void createUIComponents() {
+        taLog = new JLogArea();
+        taLog.setFont(SwingUtils.getFont());
+    }
+
+    public JLogArea getLog() {
         return taLog;
     }
 }

@@ -1,6 +1,7 @@
 package pop3;
 
 import mainwindow.Main;
+import utils.JLogArea;
 import utils.SocketUtils;
 
 import javax.swing.*;
@@ -15,7 +16,7 @@ import java.util.List;
 public class MailServer extends Thread {
     public static final String LOCAL_DOMAIN = "meinewelt.de";
     private final DefaultListModel<User> users;
-    private final JTextArea taLog;
+    private final JLogArea taLog;
     JPPOP3Server window;
     private ServerSocket serverSocket;
     private boolean running;
@@ -33,7 +34,7 @@ public class MailServer extends Thread {
         return prefix + "@" + LOCAL_DOMAIN;
     }
 
-    public JTextArea getTALog() {
+    public JLogArea getTALog() {
         return taLog;
     }
 

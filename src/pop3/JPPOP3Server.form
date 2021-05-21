@@ -124,14 +124,8 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="3dbb5" class="javax.swing.JTextArea" binding="taLog">
+          <component id="19121" class="utils.JLogArea" binding="taLog" custom-create="true">
             <constraints/>
-            <properties>
-              <editable value="false"/>
-              <enabled value="true"/>
-              <lineWrap value="true"/>
-              <wrapStyleWord value="true"/>
-            </properties>
           </component>
         </children>
       </scrollpane>
