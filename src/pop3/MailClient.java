@@ -137,7 +137,7 @@ class MailClient extends Thread {
                 writer.println("+ERROR invalid message");
             } else {
                 // send formatted message
-                writer.println(m.format());
+                writer.println("+OK message follows\n" + m.format());
             }
         } else if (mDELE.find()) {
             // Command DELEte
